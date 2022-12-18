@@ -8,6 +8,14 @@ import '../data/repository/pochta_repository.dart';
 class PochtaViewModel extends ChangeNotifier {
   final PochtaRepository productRepository;
 
+  PochtaModel? currentPostage;
+  num? distance;
+  changePostage(PochtaModel newPostage,num distance1){
+    currentPostage=newPostage;
+    distance=distance1;
+    notifyListeners();
+  }
+
   PochtaViewModel({required this.productRepository}){
     listenProducts("");
   }
