@@ -56,8 +56,8 @@ class _MainPageState extends State<MainPage> {
                                 padding: EdgeInsets.only(top: m_h(context)*0.01),
                                 child: Column(
                                   children: [
-                                    SvgPicture.asset(MyIcons.location, height: 30, width: 30, color:  currentPage==0? Colors.blue : MyColors.C_938F88),
-                                    Text("Mails", style: GoogleFonts.mulish(color:  currentPage==0? Colors.blue : MyColors.C_938F88, fontWeight: FontWeight.w600),)
+                                    SvgPicture.asset(MyIcons.location, height: 30.h, width: 30.w, color:  currentPage==0? MyColors.C_46AEF5 : MyColors.C_938F88),
+                                    Text("Mails", style: GoogleFonts.mulish(color:  currentPage==0? MyColors.C_46AEF5 : MyColors.C_938F88, fontWeight: FontWeight.w600),)
                                   ],
                                 ),
                               )),
@@ -71,9 +71,9 @@ class _MainPageState extends State<MainPage> {
                                 padding: EdgeInsets.only(top: m_h(context)*0.016),
                                 child: Column(
                                   children: [
-                                    SvgPicture.asset(MyIcons.pin, height: 23, width: 23,color:  currentPage==1? Colors.blue : MyColors.C_938F88),
+                                    SvgPicture.asset(MyIcons.pin, height: 23.h, width: 23.w,color:  currentPage==1? MyColors.C_46AEF5 : MyColors.C_938F88),
                                     SizedBox(height: m_h(context)*0.005,),
-                                    Text("Saved", style: GoogleFonts.mulish(color:  currentPage==1? Colors.blue : MyColors.C_938F88, fontWeight: FontWeight.w600),)
+                                    Text("Saved", style: GoogleFonts.mulish(color:  currentPage==1? MyColors.C_46AEF5 : MyColors.C_938F88, fontWeight: FontWeight.w600),)
                                   ],
                                 ),
                               )),
