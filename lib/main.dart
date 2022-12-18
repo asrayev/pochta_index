@@ -23,6 +23,7 @@ void main() async{
         supportedLocales: [
           Locale('en', 'US'),
           Locale('uz', 'UZ'),
+          Locale('ru', 'RU'),
         ],
         path: 'assets/translations',
        child: MultiProvider(
