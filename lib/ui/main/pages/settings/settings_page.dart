@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +24,7 @@ class SettingPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: m_h(context)*0.03,),
-            Center(child: Text("Settings", style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),)),
+            Center(child: Text("Settings".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),)),
 
             SizedBox(height: m_h(context)*0.03,),
             InkWell(

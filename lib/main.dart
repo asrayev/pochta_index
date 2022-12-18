@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,11 +14,23 @@ void main() async{
 
   await Firebase.initializeApp();
   var fireStore = FirebaseFirestore.instance;
-  runApp( MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => PochtaViewModel(productRepository: PochtaRepository(firebaseFirestore: fireStore))),
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  // StorageService.getInstance();
+  runApp(
+      EasyLocalization(
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('uz', 'UZ'),
         ],
-      child:  MyApp()));
+        path: 'assets/translations',
+       child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => PochtaViewModel(productRepository: PochtaRepository(firebaseFirestore: fireStore))),
+          ],
+        child:  MyApp()),
+  ));
 }
 class MyApp extends StatelessWidget {
 
@@ -32,7 +45,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext contex, Widget? child) {
-        return const MaterialApp(
+        return  MaterialApp(
+          locale: context.locale,
+          supportedLocales: context.supportedLocales,
+          localizationsDelegates: context.localizationDelegates,
           debugShowCheckedModeBanner: false,
           home: SplashPage(),
         );

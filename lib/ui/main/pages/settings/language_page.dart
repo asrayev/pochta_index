@@ -4,9 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/utils/my_icons.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
+import 'package:provider/provider.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _LanguagePageState extends State<LanguagePage> {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SettingPage()));
                      }),
                     child: SvgPicture.asset(MyIcons.back, color: MyColors.C_1C2632,height: 35.h, width: 35.w,)),
-                Text("Language", style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
+                Text("Language".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
                 SizedBox(width: 35.w,)
               ],
             ),
@@ -58,6 +59,7 @@ class _LanguagePageState extends State<LanguagePage> {
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: ((){
+                              context.setLocale(Locale('uz','UZ'));
                               uz = 1;
                               en = 0;
                               ru = 0;
@@ -66,9 +68,11 @@ class _LanguagePageState extends State<LanguagePage> {
                             child: funSettings(context,"UZ", "Uzbekistan", uz)),
                         myLine(context),
                         InkWell(
+
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: ((){
+                              context.setLocale(Locale('en','US'));
                               uz = 0;
                               en = 1;
                               ru = 0;

@@ -31,8 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localization:
-    sdk: flutter
+
 
 
 
@@ -51,6 +50,7 @@ dependencies:
   shared_preferences: ^2.0.15
   animated_text_kit: ^4.2.2
   app_settings: ^4.1.8
+  easy_localization: ^3.0.1
 
   #FireBase
   firebase_core: ^2.3.0
@@ -85,6 +85,7 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -92,7 +93,7 @@ flutter:
     - assets/lotties/
     - assets/icons/
     - assets/icons/settings/
-
+    - assets/translations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
