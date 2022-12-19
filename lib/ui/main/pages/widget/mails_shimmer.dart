@@ -18,19 +18,20 @@ class MailsShimmer extends StatelessWidget {
       child: Column(
 
         children: [
-          SizedBox(height: m_h(context)*0.1,),
+
       Padding(
       padding: EdgeInsets.only(
       right: m_w(context) * 0.03,
         left: m_w(context) * 0.03),
       child: Container(
-    height: m_h(context) * 0.2,
+    height: m_h(context) * 0.23,
       decoration: BoxDecoration(
     color: Colors.blue,
-    borderRadius: BorderRadius.circular(25)
+    borderRadius: BorderRadius.circular(15)
       ),
 
       )),
+          SizedBox(height: m_h(context)*0.05,),
           SizedBox(
             width: double.infinity,
             height: m_h(context) * 0.6,

@@ -15,6 +15,8 @@ class PostsSmallCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       onTap: () {
         context.read<PochtaViewModel>().changePostage(category,distance);
       },

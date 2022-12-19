@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
+import '../../../../data/servis/language_storege.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
 import 'package:provider/provider.dart';
@@ -60,6 +61,8 @@ class _LanguagePageState extends State<LanguagePage> {
                             splashColor: Colors.transparent,
                             onTap: ((){
                               context.setLocale(Locale('uz','UZ'));
+
+
                               uz = 1;
                               en = 0;
                               ru = 0;
