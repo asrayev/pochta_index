@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,8 +31,8 @@ class _MainPageState extends State<MainPage> {
        unselectedItemColor: MyColors.C_938F88,
        selectedItemColor: MyColors.C_46AEF5,
        items: [
-         BottomNavigationBarItem(icon: SvgPicture.asset(MyIcons.location, height: 30.h, width: 30.w, color:  colorGenerator(0)),label: "Mails"),
-         BottomNavigationBarItem(icon: SvgPicture.asset(MyIcons.pin, height: 23.h, width: 23.w,color:  colorGenerator(1)),label: "Saved"),
+         BottomNavigationBarItem(icon: SvgPicture.asset(MyIcons.location, height: 30.h, width: 30.w, color:  colorGenerator(0)),label: "Mails".tr()),
+         BottomNavigationBarItem(icon: SvgPicture.asset(MyIcons.pin, height: 23.h, width: 23.w,color:  colorGenerator(1)),label: "Saved".tr()),
 
        ],
      ),

@@ -1,4 +1,19 @@
 {
-  "Settings": "asdfsdf",
-  "Language": "sdafasdf"
+  "Settings": "Settings",
+  "Language": "Language",
+  "Rate this app": "Rate this app",
+  "Share this app": "Share this app",
+  "Contact support": "Contact support",
+  "About application": "About application",
+  "Quit": "Quit",
+  "Index": "Index",
+  "Cancel": "Cancel",
+  "Exit?": "Exit?",
+  "Are you sure want to exit?": "Are you sure want to exit?",
+  "Text copied to clipboard": "Text copied to clipboard",
+  "To the nearest postage:": "To the nearest postage:",
+  "Phone number    ": "Phone number    ",
+  "Address  ": "Address  ",
+  "Mails": "Mails",
+  "Saved": "Saved"
 }

@@ -1,4 +1,19 @@
 {
   "Settings": "Sozlamalar",
-  "Language": "Til"
+  "Language": "Til",
+  "Rate this app": "Ilovani baholash",
+  "Share this app": "Ilovani ulashish",
+  "Contact support": "Support bilan aloqa",
+  "About application": "Ilova haqida",
+  "Quit": "Chiqish",
+  "Index": "Indeksi",
+  "Cancel": "Orqaga",
+  "Exit?": "Chiqish?",
+  "Are you sure want to exit?": "Ilovadan chiqmoqchisizmi?",
+  "Text copied to clipboard": "Indeks nushalandi",
+  "To the nearest postage:": "Eng yaqin pochta:",
+  "Phone number    ": "Telefon raqami    ",
+  "Address  ": "Manzil  ",
+  "Mails": "Pochta",
+  "Saved": "Saqlanganlar"
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,6 @@ import '../../../../utils/my_colors.dart';
 import '../../../../utils/my_icons.dart';
 import '../../../../utils/my_utils.dart';
 import 'package:provider/provider.dart';
-
 
 
 class PostageCardWidget extends StatefulWidget {
@@ -40,7 +40,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children:
               [
-                Text("Eng yaqin pochta ", style: GoogleFonts.raleway(color: MyColors.C_8A96A4, fontSize: 14.sp),),
+                Text("To the nearest postage:".tr(), style: GoogleFonts.raleway(color: MyColors.C_8A96A4, fontSize: 14.sp),),
                 Text("${context.watch<PochtaViewModel>().distance!.toStringAsFixed(2)} km", style: TextStyle(color: Colors.white, fontSize: 14.sp), )
               ],
             ),
@@ -54,7 +54,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                     InkWell(
                         onTap: (() async{
                           await Clipboard.setData(ClipboardData(text: postage.oldIndex.toString()));
-                          MyUtils.getMyToast(message: "Text copied to clipboard");
+                          MyUtils.getMyToast(message: "Text copied to clipboard".tr());
                         }),
                         child: SvgPicture.asset(MyIcons.copy, height: 24.h,width: 24.w, color: MyColors.C_46AEF5,))
                   ],
@@ -65,7 +65,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
             Row(
               children: [
                 SizedBox(width: 3.w,),
-                Text("Indeksi", style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),),
+                Text("Index".tr(), style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),),
               ],
             ),// index
             SizedBox(height: m_h(context)*0.018,),
@@ -108,7 +108,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               children: [
                 Row(
                   children: [
-                    Text("Address  ", style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),),
+                    Text("Address  ".tr(), style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),),
                     SizedBox(width: m_w(context)*0.005,),
                     InkWell(
                         onTap: (()async {
@@ -118,7 +118,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                   ],
                 ),
 
-                Text("Phone number    ", style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),)
+                Text("Phone number    ".tr(), style: TextStyle(color: MyColors.C_8A96A4, fontSize: 14.sp),)
 
               ],
             )//address
