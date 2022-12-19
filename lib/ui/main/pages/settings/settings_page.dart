@@ -48,7 +48,7 @@ class SettingPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Language", style: GoogleFonts.balsamiqSans(color: Colors.white, fontSize: 17.sp, fontWeight: FontWeight.w300),),
+                        Text("Language".tr(), style: GoogleFonts.balsamiqSans(color: Colors.white, fontSize: 17.sp, fontWeight: FontWeight.w300),),
                         SvgPicture.asset(MyIcons.earth, height: 22.h, width: 22.h,color: MyColors.C_46AEF5,)
                       ],
                     ),
@@ -69,13 +69,13 @@ class SettingPage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: m_h(context)*0.02,),
-                    funSettings(context,"Rate this app", MyIcons.star),
+                    funSettings(context,"Rate this app".tr(), MyIcons.star),
                     myLine(context),
-                    funSettings(context,"Share this app", MyIcons.share),
+                    funSettings(context,"Share this app".tr(), MyIcons.share),
                     myLine(context),
-                    funSettings(context,"Contact support", MyIcons.mail),
+                    funSettings(context,"Contact support".tr(), MyIcons.mail),
                     myLine(context),
-                    funSettings(context,"About application", MyIcons.document),
+                    funSettings(context,"About application".tr(), MyIcons.document),
 
 
                   ],
@@ -96,11 +96,11 @@ class SettingPage extends StatelessWidget {
                       ),
                       backgroundColor:
                       MyColors.C_1C2632,
-                      title: new Text("Exit?", style: TextStyle(color: Colors.white),),
-                      content: new Text("Are you sure want to exit?", style: TextStyle(color: Colors.white),),
+                      title: new Text("Exit?".tr(), style: TextStyle(color: Colors.white),),
+                      content: new Text("Are you sure want to exit?".tr(), style: TextStyle(color: Colors.white),),
                       actions: <Widget>[
-                        TextButton(onPressed: ((){Navigator.pop(context);}), child: Text("Cancel", style: TextStyle(color: MyColors.C_8A96A4),)),
-                        TextButton(onPressed: ((){exit(0);}), child: Text("Quit", style: TextStyle(color: Colors.red
+                        TextButton(onPressed: ((){Navigator.pop(context);}), child: Text("Cancel".tr(), style: TextStyle(color: MyColors.C_8A96A4),)),
+                        TextButton(onPressed: ((){exit(0);}), child: Text("Quit".tr(), style: TextStyle(color: Colors.red
                         ),)),
                       ],
                     );
@@ -121,7 +121,7 @@ class SettingPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Quit", style: GoogleFonts.balsamiqSans(color: Colors.white, fontSize: 17.sp, fontWeight: FontWeight.w300),),
+                        Text("Quit".tr(), style: GoogleFonts.balsamiqSans(color: Colors.white, fontSize: 17.sp, fontWeight: FontWeight.w300),),
                         SvgPicture.asset(MyIcons.quit, height: 22.h, width: 22.h,color: MyColors.C_46AEF5,)
                       ],
                     ),

@@ -82,9 +82,11 @@ class _LanguagePageState extends State<LanguagePage> {
                             child: funSettings(context,"EN", "USA", en)),
                         myLine(context),
                         InkWell(
+
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: ((){
+                              context.setLocale(Locale('ru','RU'));
                               uz = 0;
                               en = 0;
                               ru = 1;
