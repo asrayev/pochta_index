@@ -31,7 +31,7 @@ class MailsShimmer extends StatelessWidget {
       ),
 
       )),
-          SizedBox(height: m_h(context)*0.05,),
+          SizedBox(height: m_h(context)*0.06,),
           SizedBox(
             width: double.infinity,
             height: m_h(context) * 0.6,
@@ -45,7 +45,7 @@ class MailsShimmer extends StatelessWidget {
                   child: Container(
                       height: m_h(context)*0.07,
                   decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(9),
                   color: Colors.blue,)
                   ),
                 );
