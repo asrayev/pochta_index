@@ -74,6 +74,8 @@ class _MailsPageState extends State<MailsPage> {
         elevation: 0,
         actions: [
           InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
             onTap: ((){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
             }),
