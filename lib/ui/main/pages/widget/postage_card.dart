@@ -5,7 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
+import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
 import '../../../../utils/map_util.dart';
 import '../../../../utils/media_query.dart';
@@ -47,8 +49,10 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
             ),
             SizedBox(height: 12.h,),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(widget.postage.oldIndex.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.sp),),
                     SizedBox(width: m_w(context)*0.005,),
@@ -57,9 +61,16 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                           await Clipboard.setData(ClipboardData(text: widget.postage.oldIndex.toString()));
                           MyUtils.getMyToast(message: "Text copied to clipboard".tr());
                         }),
-                        child: SvgPicture.asset(MyIcons.copy, height: 24.h,width: 24.w, color: MyColors.C_46AEF5,))
+                        child: SvgPicture.asset(MyIcons.copy, height: 24.h,width: 24.w, color: MyColors.C_46AEF5,)),
+
                   ],
                 ),
+                Container(
+                  height: 30.h,
+                  width: 30.w,
+             // child: Lottie.asset(MyLottie.greyoff),
+                  child: isOnline(int.parse(widget.postage.workDay.toString()),int.parse(widget.postage.workHour.toString()) ),
+                )
 
               ],
             ),
@@ -125,4 +136,28 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
       ),
     );
   }
+  dynamic isOnline(int day, int hour){
+    var moonLanding = DateTime.now();
+    int weekday = moonLanding.weekday;
+    int nowhour = moonLanding.hour;
+    int pochtastart = 0;
+    int pochtaend = int.parse("${hour.toString()[2]}${hour.toString()[3]}");
+    if(hour.toString()[0]=="3"){
+      pochtastart = int.parse("${hour.toString()[1]}");
+    }
+    if(day == 8){
+      return Lottie.asset(MyLottie.greyoff,);
+    }else if(hour == 7777) {
+      return Lottie.asset(MyLottie.online,);
+    }else if (weekday<=day){
+         if (pochtastart <=nowhour && nowhour<= pochtaend){
+    return Lottie.asset(MyLottie.online,);
+    }else{
+    return Lottie.asset(MyLottie.offline,);
+    }
+    }
+
+
+  }
+
 }

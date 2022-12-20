@@ -81,7 +81,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                       Text("Ish kunlari".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
-                          child: Text(widget.postage.workDay.toString(),style: TextStyle(color: Colors.white)))
+                          child: Text(parseDay(int.parse(widget.postage.workDay.toString())),style: TextStyle(color: Colors.white)))
 
 
                     ],
@@ -94,7 +94,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                       Text("Ish soati".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
-                          child: Text(widget.postage.workHour.toString(),style: TextStyle(color: Colors.white)))
+                          child: Text(parsedate(int.parse(widget.postage.workHour.toString())),style: TextStyle(color: Colors.white)))
 
 
                     ],
@@ -162,5 +162,35 @@ class _FullInfoPageState extends State<FullInfoPage> {
         ),
       ),
     );
+  }
+  String parsedate(int num) {
+    String firstnum = (num~/1000).toString();
+    String numstr = num.toString();
+    if (num ==8888){
+      return "Ko'rsatilmagan";
+    }
+    else if (num ==7777){
+      return "24 soat";
+    }
+    else if (firstnum == "3"){
+      return "0${numstr[1]}:00 - ${numstr[2]}${numstr[3]}:00";
+    }
+     //08:00 -
+     else {
+    return "${numstr[0]}${numstr[1]}:00 - ${numstr[2]}${numstr[3]}:00";
+    }
+  }
+  String parseDay(int day){
+    if(day == 8){
+      return "Ko'rsatilmagan";
+    }else if(day == 7){
+      return "Har kuni";
+    }else if (day == 6){
+      return "Dushanbadan - Shanbagacha";
+    }else if( day ==5){
+      return "Dushanbadan -Jumagacha";
+    }else{
+      return "Dushanba Payshanba bo`lsa kerak";
+    }
   }
 }
