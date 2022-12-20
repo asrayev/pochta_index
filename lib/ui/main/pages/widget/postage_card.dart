@@ -156,8 +156,5 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
     return Lottie.asset(MyLottie.offline,);
     }
     }
-
-
   }
-
 }
