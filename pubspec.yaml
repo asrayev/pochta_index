@@ -63,6 +63,7 @@ dependencies:
   url_launcher: ^6.1.7
   fluttertoast: ^8.1.1
   zoom_tap_animation: ^1.1.0
+  google_maps_widget: ^1.0.5+1
 
 
 dev_dependencies:
