@@ -108,9 +108,9 @@ class _MailsPageState extends State<MailsPage> {
           }
           if (snapshot.hasData) {
             List<PochtaModel> mails = snapshot.data!;
-            context.read<PochtaViewModel>().changePostage(mails[0],distance(mails[0].lat, mails[0].lon));
             mails.sort((a, b) => distance(a.lat, a.lon)
                 .compareTo(distance(b.lat, b.lon)));
+            context.read<PochtaViewModel>().changePostage(mails[0],distance(mails[0].lat, mails[0].lon));
             return Padding(
               padding: EdgeInsets.only(
                   right: m_w(context) * 0.03,
@@ -121,10 +121,9 @@ class _MailsPageState extends State<MailsPage> {
                   PostageCardWidget(),
                   SizedBox(height: m_h(context)*0.02,),
                   Text("Qolgan pochtalar", style: GoogleFonts.signika(color: Colors.white),),
-                  SizedBox(
-                    width: double.infinity,
-                    height: m_h(context) * 0.545,
+                  Expanded(
                     child: ListView(
+                      shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
                       children: List.generate(mails.length-1, (index) {
                         PochtaModel category = mails[index];
