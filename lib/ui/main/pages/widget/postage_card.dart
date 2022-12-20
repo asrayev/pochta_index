@@ -16,7 +16,8 @@ import 'package:provider/provider.dart';
 
 
 class PostageCardWidget extends StatefulWidget {
-  PostageCardWidget({Key? key}) : super(key: key);
+  PochtaModel postage;
+  PostageCardWidget({required this.postage,Key? key}) : super(key: key);
 
   @override
   State<PostageCardWidget> createState() => _PostageCardWidgetState();
@@ -25,7 +26,7 @@ class PostageCardWidget extends StatefulWidget {
 class _PostageCardWidgetState extends State<PostageCardWidget> {
   @override
   Widget build(BuildContext context) {
-    PochtaModel postage=context.watch<PochtaViewModel>().currentPostage!;
+    print("Postage is: ${widget.postage.oldIndex}");
     return Container(
       height: m_h(context) * 0.24,
       decoration: BoxDecoration(
@@ -49,11 +50,11 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               children: [
                 Row(
                   children: [
-                    Text(postage.oldIndex.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.sp),),
+                    Text(widget.postage.oldIndex.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.sp),),
                     SizedBox(width: m_w(context)*0.005,),
                     InkWell(
                         onTap: (() async{
-                          await Clipboard.setData(ClipboardData(text: postage.oldIndex.toString()));
+                          await Clipboard.setData(ClipboardData(text: widget.postage.oldIndex.toString()));
                           MyUtils.getMyToast(message: "Text copied to clipboard".tr());
                         }),
                         child: SvgPicture.asset(MyIcons.copy, height: 24.h,width: 24.w, color: MyColors.C_46AEF5,))
@@ -77,7 +78,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                     SizedBox(
                         height: m_h(context) * 0.07,
                         width: m_w(context)*0.45,
-                        child: Center(child: Text(postage.address.toString().length > 121 ? postage.address.toString().substring(0,122) : postage.address.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500,fontSize: 12.sp ),))),
+                        child: Center(child: Text(widget.postage.address.toString().length > 121 ? widget.postage.address.toString().substring(0,122) : widget.postage.address.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500,fontSize: 12.sp ),))),
 
 
                   ],
@@ -92,12 +93,9 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                           height: m_h(context) * 0.025,
                           width: m_w(context)*0.30,
 
-                          child: Text(postage.phoneNumber.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 12.sp),),),
+                          child: Text(widget.postage.phoneNumber.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 12.sp),),),
                       ],
                     )
-
-
-
                   ],
                 ),
 
@@ -112,7 +110,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
                     SizedBox(width: m_w(context)*0.005,),
                     InkWell(
                         onTap: (()async {
-                          MapUtils.navigateTo(double.parse(postage.lat.toString()),double.parse(postage.lon.toString()));
+                          MapUtils.navigateTo(double.parse(widget.postage.lat.toString()),double.parse(widget.postage.lon.toString()));
                         }),
                         child: SvgPicture.asset(MyIcons.location_map, color: MyColors.C_46AEF5, height: 20.h, width: 20.w,)),
                   ],

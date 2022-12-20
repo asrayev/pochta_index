@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
 import 'package:pochta_index/ui/description/post_page.dart';
-import 'package:pochta_index/view_model/pochta_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
-
+import '../../../../view_model/pochta_view_model.dart';
+import 'package:provider/provider.dart';
 class PostsSmallCard extends StatelessWidget {
   PochtaModel category;
   num distance;
@@ -14,11 +14,9 @@ class PostsSmallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      highlightColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      onTap: () {
-        context.read<PochtaViewModel>().changePostage(category,distance);
+    return ZoomTapAnimation(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>FullInfoPage(postage: category)));
       },
       child: Container(
         margin: const EdgeInsets.only(top: 12).r,
