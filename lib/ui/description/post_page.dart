@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
+import 'package:pochta_index/utils/map_util.dart';
 import 'package:pochta_index/utils/media_query.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -116,16 +117,21 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        height: 48,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(12)
+                      ZoomTapAnimation(
+                        child: Container(
+                          height: 48,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(12)
+                          ),
+                          child: Center(
+                            child: Icon(Icons.location_city),
+                          ),
                         ),
-                        child: Center(
-                          child: Icon(Icons.location_city),
-                        ),
+                        onTap: (){
+                          MapUtils.navigateTo(widget.postage.lat!, widget.postage.lon!);
+                        },
                       ),
                       ZoomTapAnimation(
                         onTap: () async {
