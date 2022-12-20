@@ -119,7 +119,12 @@ class _MailsPageState extends State<MailsPage> {
                 children: [
                  PostageCardWidget(postage: context.watch<PochtaViewModel>().currentPostage!),
                   SizedBox(height: m_h(context)*0.02,),
-                  Text("Qolgan pochtalar", style: GoogleFonts.signika(color: Colors.white),),
+                  Row(
+                    children: [
+                      SizedBox(width: 4.w,),
+                      Text("Others", style: GoogleFonts.signika(color: Colors.white),),
+                    ],
+                  ),
                   Expanded(
                     child: ListView(
                       shrinkWrap: true,
