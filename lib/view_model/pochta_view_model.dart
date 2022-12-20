@@ -9,10 +9,12 @@ class PochtaViewModel extends ChangeNotifier {
   final PochtaRepository productRepository;
 
   PochtaModel? currentPostage;
+  bool isSwitched=false;
   num? distance;
   changePostage(PochtaModel newPostage,num distance1){
     currentPostage=newPostage;
     distance=distance1;
+    isSwitched=!isSwitched;
     notifyListeners();
   }
 

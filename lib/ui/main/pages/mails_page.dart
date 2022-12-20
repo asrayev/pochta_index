@@ -63,10 +63,9 @@ class _MailsPageState extends State<MailsPage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
-    print("latlatlatlatlatlat ${UserLocation.lat}");
-    print("lonlonlonlonlonlon ${UserLocation.long}");
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       appBar: AppBar(
@@ -118,7 +117,7 @@ class _MailsPageState extends State<MailsPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  PostageCardWidget(),
+                 PostageCardWidget(postage: context.watch<PochtaViewModel>().currentPostage!),
                   SizedBox(height: m_h(context)*0.02,),
                   Text("Qolgan pochtalar", style: GoogleFonts.signika(color: Colors.white),),
                   Expanded(

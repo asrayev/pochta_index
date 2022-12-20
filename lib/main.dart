@@ -4,8 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pochta_index/data/repository/pochta_repository.dart';
-import 'package:pochta_index/ui/main/pages/widget/mail_hasError.dart';
-import 'package:pochta_index/ui/main/pages/widget/mail_location.dart';
 import 'package:pochta_index/ui/splash/splash_page.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
 import 'package:provider/provider.dart';
