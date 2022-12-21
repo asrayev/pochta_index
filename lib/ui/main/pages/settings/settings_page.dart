@@ -1,16 +1,18 @@
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pochta_index/ui/main/pages/settings/about_us_page.dart';
 import 'package:pochta_index/utils/media_query.dart';
 import 'package:pochta_index/utils/my_colors.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:pochta_index/utils/my_lotties.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../utils/map_util.dart';
 import 'language_page.dart';
 
 class SettingPage extends StatelessWidget {
@@ -71,11 +73,28 @@ class SettingPage extends StatelessWidget {
                     SizedBox(height: m_h(context)*0.02,),
                     funSettings(context,"Rate this app".tr(), MyIcons.star),
                     myLine(context),
-                    funSettings(context,"Share this app".tr(), MyIcons.share),
+                    InkWell(
+                        onTap: ((){
+                          _launchURL;
+                        }),
+
+                        child: funSettings(context,"Share this app".tr(), MyIcons.share)),
                     myLine(context),
-                    funSettings(context,"Contact support".tr(), MyIcons.mail),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          MapUtils.openSupport();
+                        }),
+                        child: funSettings(context,"Contact support".tr(), MyIcons.mail)),
                     myLine(context),
-                    funSettings(context,"About application".tr(), MyIcons.document),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutUsPage()));
+                        }),
+                        child: funSettings(context,"About application".tr(), MyIcons.document)),
 
 
                   ],
@@ -170,6 +189,14 @@ class SettingPage extends StatelessWidget {
                       SizedBox(height: m_h(context)*0.02,),
                     ],
                   );
+  }
+  _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
 // alatsi

@@ -34,6 +34,9 @@ class _LanguagePageState extends State<LanguagePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
+
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
                     onTap: ((){
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SettingPage()));
                      }),

@@ -11,12 +11,12 @@ class MapUtils {
       throw 'Could not launch ${uri.toString()}';
     }
   }
-  static Future<void> openMap(double latitude, double longitude) async {
-    String googleUrl = 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-    if (await canLaunch(googleUrl)) {
-      await launch(googleUrl);
+  static void openSupport() async {
+    var uri = Uri.parse("https://t.me/asrayev");
+    if (await canLaunch(uri.toString())) {
+      await launch(uri.toString());
     } else {
-      throw 'Could not open the map.';
+      throw 'Could not launch ${uri.toString()}';
     }
   }
 

@@ -52,6 +52,7 @@ dependencies:
   app_settings: ^4.1.8
   easy_localization: ^3.0.1
   flutter_phone_direct_caller: ^2.1.1
+  connectivity_plus: ^3.0.2
 
   #FireBase
   firebase_core: ^2.3.0
