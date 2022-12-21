@@ -16,9 +16,7 @@ class MailsShimmer extends StatelessWidget {
       baseColor: MyColors.C_1C2632,
       highlightColor: Colors.grey[700]!,
       child: Column(
-
         children: [
-
       Padding(
       padding: EdgeInsets.only(
       right: m_w(context) * 0.03,
@@ -32,10 +30,9 @@ class MailsShimmer extends StatelessWidget {
 
       )),
           SizedBox(height: m_h(context)*0.06,),
-          SizedBox(
-            width: double.infinity,
-            height: m_h(context) * 0.6,
+          Expanded(
             child: ListView.builder(
+              shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               itemCount: 12,
               scrollDirection: Axis.vertical,
