@@ -112,7 +112,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
 
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 120,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                               borderRadius: BorderRadius.circular(12)
                           ),
                           child: Center(
-                            child: Icon(Icons.location_city),
+                            child: Icon(Icons.location_on),
                           ),
                         ),
                         onTap: (){

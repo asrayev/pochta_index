@@ -64,6 +64,7 @@ dependencies:
   fluttertoast: ^8.1.1
   zoom_tap_animation: ^1.1.0
   google_maps_widget: ^1.0.5+1
+  flutter_staggered_animations: ^1.1.1
 
 
 dev_dependencies:

@@ -125,7 +125,7 @@ class _MailsPageState extends State<MailsPage> {
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
                       children: List.generate(mails.length-1, (index) {
-                        PochtaModel category = mails[index];
+                        PochtaModel category = mails[index+1];
                         return PostsSmallCard(category: category,distance: distance(category.lat, category.lon),);
                       }),
                     ),
