@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
+import 'package:pochta_index/data/servis/distance_service.dart';
 import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
 import '../../../../utils/map_util.dart';
@@ -47,10 +48,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               [
                 Text("To the nearest postage:".tr(), style: GoogleFonts.raleway(
                     color: MyColors.C_8A96A4, fontSize: 14.sp),),
-                Text("${context
-                    .watch<PochtaViewModel>()
-                    .distance!
-                    .toStringAsFixed(2)} km",
+                Text("${distance(widget.postage.lat, widget.postage.lon).toStringAsFixed(2)} km",
                   style: TextStyle(color: Colors.white, fontSize: 14.sp),)
               ],
             ),
