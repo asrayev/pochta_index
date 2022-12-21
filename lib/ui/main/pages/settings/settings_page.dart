@@ -12,6 +12,7 @@ import 'package:pochta_index/utils/my_icons.dart';
 import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../utils/map_util.dart';
 import 'language_page.dart';
 
 class SettingPage extends StatelessWidget {
@@ -79,7 +80,13 @@ class SettingPage extends StatelessWidget {
 
                         child: funSettings(context,"Share this app".tr(), MyIcons.share)),
                     myLine(context),
-                    funSettings(context,"Contact support".tr(), MyIcons.mail),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          MapUtils.openSupport();
+                        }),
+                        child: funSettings(context,"Contact support".tr(), MyIcons.mail)),
                     myLine(context),
                     InkWell(
                         highlightColor: Colors.transparent,
