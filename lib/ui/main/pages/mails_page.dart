@@ -16,6 +16,7 @@ import 'package:pochta_index/utils/media_query.dart';
 import 'package:pochta_index/utils/my_colors.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
+import 'package:pochta_index/view_model/saveds_view_model.dart';
 import 'package:provider/provider.dart';
 import 'dart:math' as math;
 
@@ -30,6 +31,7 @@ class _MailsPageState extends State<MailsPage> {
   @override
   void initState() {
     super.initState();
+    context.read<SavedsViewModel>().listenSaveds(context.read<PochtaViewModel>().products);
     locationService();
     getconnet();
   }
@@ -143,7 +145,12 @@ class _MailsPageState extends State<MailsPage> {
                       physics: const BouncingScrollPhysics(),
                       children: List.generate(mails.length-1, (index) {
                         PochtaModel category = mails[index+1];
-                        return PostsSmallCard(category: category,distance: distance(category.lat, category.lon),);
+                        return Dismissible(
+                            key: UniqueKey(),
+                            onDismissed: (direction) async{
+                              await context.read<SavedsViewModel>().insertToDb(category.oldIndex!, context.read<SavedsViewModel>().saveds!);
+                            },
+                            child: PostsSmallCard(category: category,distance: distance(category.lat, category.lon),));
                       }),
                     ),
                   )

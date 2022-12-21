@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
+import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/description/post_page.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../utils/media_query.dart';
@@ -15,7 +16,7 @@ class PostsSmallCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
-      onTap: (){
+      onTap: () async {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>FullInfoPage(postage: category)));
       },
       child: Container(

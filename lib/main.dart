@@ -3,9 +3,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pochta_index/data/repository/database_repository.dart';
 import 'package:pochta_index/data/repository/pochta_repository.dart';
 import 'package:pochta_index/ui/splash/splash_page.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
+import 'package:pochta_index/view_model/saveds_view_model.dart';
 import 'package:provider/provider.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +29,7 @@ void main() async{
        child: MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (context) => PochtaViewModel(productRepository: PochtaRepository(firebaseFirestore: fireStore))),
+            ChangeNotifierProvider(create: (context) => SavedsViewModel(localDatabaseRepository: LocalDatabaseRepository()),)
           ],
         child:  MyApp()),
   ));
