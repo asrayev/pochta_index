@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,17 @@ class _MailsPageState extends State<MailsPage> {
   void initState() {
     super.initState();
     locationService();
+    getconnet();
   }
+  Future<bool> getconnet()async{
+   var  connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet || connectivityResult == ConnectivityResult.wifi) {
+      return true;
+    } else  {
+      return false;
+    }
+  }
+
 
   Future<void> locationService() async {
     Location location = new Location();
@@ -91,7 +102,8 @@ class _MailsPageState extends State<MailsPage> {
         stream: Provider.of<PochtaViewModel>(context, listen: false)
             .listenProducts1(),
         builder: (context, snapshot) {
-          if(snapshot.hasError){
+
+          if(snapshot.hasError ){
             return const MailHasError();
           }
           if (UserLocation.lat == 0.0) {
