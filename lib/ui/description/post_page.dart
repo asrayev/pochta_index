@@ -196,7 +196,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
       return "Unidentified".tr();
     }
     else if (num ==7777){
-      return "24 soat";
+      return "24 hour".tr();
     }
     else if (firstnum == "3"){
       return "0${numstr[1]}:00 - ${numstr[2]}${numstr[3]}:00";
