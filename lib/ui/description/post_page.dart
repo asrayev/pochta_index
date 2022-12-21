@@ -6,7 +6,6 @@ import 'package:pochta_index/data/models/pochta_model.dart';
 import 'package:pochta_index/utils/map_util.dart';
 import 'package:pochta_index/utils/media_query.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
 import '../../utils/my_colors.dart';
 import '../../utils/my_lotties.dart';
 
@@ -48,13 +47,13 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     width: 400,
                     child: Column(
                 children:  [
-                  Text("Ma'lumotlar".tr(),style: TextStyle(color: Colors.white),),
+                  Text("Information".tr(),style: TextStyle(color: Colors.white),),
                   SizedBox(height: 32,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Indeksi".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Index".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
                           child: Text(widget.postage.oldIndex.toString(),style: TextStyle(color: Colors.white)))
@@ -67,7 +66,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Manzil".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Address".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                         width: 180,
                           child: Text(widget.postage.address.toString(),style: TextStyle(color: Colors.white)))
@@ -80,7 +79,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Holati".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Status".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
                           child: Row(
@@ -104,7 +103,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Ish kunlari".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Work days".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
                           child: Text(parseDay(int.parse(widget.postage.workDay.toString())),style: TextStyle(color: Colors.white)))
@@ -117,7 +116,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Ish soati".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Work hours".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
                           child: Text(parsedate(int.parse(widget.postage.workHour.toString())),style: TextStyle(color: Colors.white)))
@@ -130,7 +129,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Telefon raqami: ".tr(),style: TextStyle(color: Colors.white),),
+                      Text("Phone number".tr(),style: TextStyle(color: Colors.white),),
                       Container(
                           width: 180,
                           child: Text(widget.postage.phoneNumber.toString(),style: TextStyle(color: Colors.white)))
@@ -194,7 +193,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
     String firstnum = (num~/1000).toString();
     String numstr = num.toString();
     if (num ==8888){
-      return "Ko'rsatilmagan";
+      return "Unidentified";
     }
     else if (num ==7777){
       return "24 soat";
@@ -209,15 +208,15 @@ class _FullInfoPageState extends State<FullInfoPage> {
   }
   String parseDay(int day){
     if(day == 8){
-      return "Ko'rsatilmagan";
+      return "Unidentified".tr();
     }else if(day == 7){
-      return "Har kuni";
+      return "Every day".tr();
     }else if (day == 6){
-      return "Dushanbadan - Shanbagacha";
+      return "Monday - Saturday".tr();
     }else if( day ==5){
-      return "Dushanbadan -Jumagacha";
+      return "Monday - Friday".tr();
     }else{
-      return "Dushanba Payshanba bo`lsa kerak";
+      return "";
     }
   }
   dynamic isOnline(int day, int hour) {
@@ -260,16 +259,16 @@ String? holati(int day, int hour) {
     print(pochtastart);
   }
   if (day == 8) {
-    return "Ko'rsatilmagan";
+    return "Unidentified".tr();
   } else if (hour == 7777) {
-    return "Ishlamoqda";
+    return "Open".tr();
   } else if (weekday <= day) {
     if (pochtastart <= nowhour && nowhour <= pochtaend) {
-      return "Ishlamoqda";
+      return "Open".tr();
     } else {
-      return "Yopiq";
+      return "Closed".tr();
     }
   } else {
-    return "Yopiq";
+    return "Closed".tr();
   }
 }

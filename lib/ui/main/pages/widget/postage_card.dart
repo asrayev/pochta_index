@@ -45,7 +45,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children:
               [
-                Text("To the nearest postage:".tr(), style: GoogleFonts.raleway(
+                Text("To the nearest postage: ".tr(), style: GoogleFonts.raleway(
                     color: MyColors.C_8A96A4, fontSize: 14.sp),),
                 Text("${context
                     .watch<PochtaViewModel>()
@@ -227,17 +227,17 @@ String? holati(int day, int hour){
     pochtastart = int.parse("${hour.toString()[0]}${hour.toString()[1]}");
   }
   if(day == 8){
-    return "Ko'rsatilmagan";
+    return "Unidentified".tr();
   }else if(hour == 7777) {
-    return "Ishlamoqda";
+    return "Open".tr();
   }else if (weekday<=day){
     if (pochtastart <=nowhour && nowhour<= pochtaend){
-      return "Ishlamoqda";
+      return "Open".tr();
     }else{
-      return "Yopiq";
+      return "Closed".tr();
     }
   }else {
-    return "Yopiq";
+    return "Closed".tr();
   }
 }
 
