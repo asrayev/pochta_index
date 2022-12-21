@@ -85,6 +85,7 @@ class _MailsPageState extends State<MailsPage> {
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       appBar: AppBar(
+        title: Text(" Pochta Indeksi", style: GoogleFonts.lalezar(color: Colors.white, fontSize: 24.sp, fontWeight: FontWeight.w300),),
         backgroundColor: MyColors.C_0F1620,
         elevation: 0,
         actions: [

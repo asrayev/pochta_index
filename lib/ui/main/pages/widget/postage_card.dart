@@ -46,7 +46,7 @@ class _PostageCardWidgetState extends State<PostageCardWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children:
               [
-                Text("To the nearest postage: ".tr(), style: GoogleFonts.raleway(
+                Text("Nearest post office: ".tr(), style: GoogleFonts.raleway(
                     color: MyColors.C_8A96A4, fontSize: 14.sp),),
                 Text("${distance(widget.postage.lat, widget.postage.lon).toStringAsFixed(2)} km",
                   style: TextStyle(color: Colors.white, fontSize: 14.sp),)

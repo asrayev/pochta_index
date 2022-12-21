@@ -193,7 +193,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
     String firstnum = (num~/1000).toString();
     String numstr = num.toString();
     if (num ==8888){
-      return "Unidentified";
+      return "Unidentified".tr();
     }
     else if (num ==7777){
       return "24 soat";
