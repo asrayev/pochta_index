@@ -33,7 +33,7 @@ class SettingPage extends StatelessWidget {
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
               onTap: ((){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LanguagePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>LanguagePage(locale: context.locale.toString(),)));
               }),
 
               child: Padding(

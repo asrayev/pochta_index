@@ -92,7 +92,7 @@ class _MailsPageState extends State<MailsPage> {
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             onTap: ((){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const SettingPage()));
             }),
             child: SvgPicture.asset(
               MyIcons.settings,

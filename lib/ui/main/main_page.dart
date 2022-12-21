@@ -13,13 +13,13 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 int currentPage=0;
-List pages=[
-  MailsPage(),
-  SavedPage()
-];
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
+    List pages=[
+      MailsPage(),
+      SavedPage()
+    ];
    return Scaffold(
      body: pages[currentPage],
      bottomNavigationBar: BottomNavigationBar(

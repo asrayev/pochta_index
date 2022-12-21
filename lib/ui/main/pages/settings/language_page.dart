@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,23 +6,41 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../../../../data/servis/language_storege.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
-import 'package:provider/provider.dart';
 
 class LanguagePage extends StatefulWidget {
-  const LanguagePage({Key? key}) : super(key: key);
+  String locale;
+   LanguagePage({required this.locale,Key? key}) : super(key: key);
 
   @override
   State<LanguagePage> createState() => _LanguagePageState();
 }
-int uz = 1;
-int en = 0;
-int ru = 0;
+
+giveMeLocale(String locale){
+  switch(locale){
+    case "ru_RU":
+      ru=1;break;
+      case "uz_UZ":
+      uz=1;break;
+      case "en_US":
+      en=1;break;
+  }
+}
+  int uz=0;
+  int en = 0;
+  int ru = 0;
+  // context.currentLocale();
+
 class _LanguagePageState extends State<LanguagePage> {
   @override
+  void initState() {
+    giveMeLocale(widget.locale);
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    print(context.locale);
 
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
@@ -38,7 +57,7 @@ class _LanguagePageState extends State<LanguagePage> {
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: ((){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SettingPage()));
+                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> const SettingPage()));
                      }),
                     child: SvgPicture.asset(MyIcons.back, color: MyColors.C_1C2632,height: 35.h, width: 35.w,)),
                 Text("Language".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
