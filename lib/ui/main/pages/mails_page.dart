@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -138,7 +139,7 @@ class _MailsPageState extends State<MailsPage> {
                   Row(
                     children: [
                       SizedBox(width: 4.w,),
-                      Text("Others", style: GoogleFonts.signika(color: Colors.white),),
+                      Text("Others".tr(), style: GoogleFonts.signika(color: Colors.white),),
                     ],
                   ),
                   Expanded(
