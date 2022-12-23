@@ -22,7 +22,9 @@ class SavedsViewModel extends ChangeNotifier{
 
   deleteByIndex(PochtaModel postage){
     localDatabaseRepository.deleteByIndex(postage.oldIndex!);
+    print("Deleted: $postage");
     saveds!.remove(postage);
+    indexes!.remove(int.parse(postage.oldIndex!));
     notifyListeners();
   }
 
@@ -39,4 +41,5 @@ class SavedsViewModel extends ChangeNotifier{
     indexes = await localDatabaseRepository.getSavedIndexes();
     notifyListeners();
   }
+
 }

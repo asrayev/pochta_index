@@ -125,6 +125,7 @@ class _MailsPageState extends State<MailsPage> {
           }
           if (snapshot.hasData) {
             List indexes = context.read<SavedsViewModel>().indexes!;
+            print(indexes);
             List<PochtaModel> mails = context.read<PochtaViewModel>().changeisSavedField(indexes);
             mails.sort((a, b) => distance(a.lat, a.lon)
                 .compareTo(distance(b.lat, b.lon)));

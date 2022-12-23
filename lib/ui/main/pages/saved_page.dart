@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/ui/main/pages/widget/postage_card.dart';
 import 'package:pochta_index/utils/my_icons.dart';
@@ -62,8 +63,10 @@ class _SavedPageState extends State<SavedPage> {
                   itemBuilder: (context, index) => Dismissible(
 
                       key: UniqueKey(),
-                      onDismissed: (direction) {
+                      onDismissed: (direction) async {
+                        List indexes= await LocalDatabase.getPostagesFromDb();
                         context.read<SavedsViewModel>().deleteByIndex(value.saveds![index]);
+                        context.read<PochtaViewModel>().changeisSavedField(indexes);
                       },
                       child: PostageCardWidget(postage: value.saveds![index])),
                   separatorBuilder: (BuildContext context, int index) {

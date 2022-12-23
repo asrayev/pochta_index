@@ -18,6 +18,9 @@ class PochtaViewModel extends ChangeNotifier {
         if(i.toString()==j.oldIndex){
           j.isSaved=true;
         }
+        else{
+          j.isSaved=false;
+        }
       }
     }
     return products;

@@ -21,7 +21,7 @@ class PostsSmallCard extends StatefulWidget {
 class _PostsSmallCardState extends State<PostsSmallCard> {
   @override
   Widget build(BuildContext context) {
-    bool isSaved= !widget.category.isSaved && context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!));
+    bool isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!)) && widget.category.isSaved;
     return ZoomTapAnimation(
       onTap: () async {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>FullInfoPage(postage: widget.category)));
@@ -43,7 +43,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
                 setState(() {});
                 print("Saved: ${widget.category.isSaved}");
               // ignore: iterable_contains_unrelated_type
-              }, icon: widget.category.isSaved?Icon(Icons.star,color: Colors.white,):Icon(Icons.star_border_outlined,color: Colors.grey,)),
+              }, icon: isSaved?Icon(Icons.star,color: Colors.white,):Icon(Icons.star_border_outlined,color: Colors.grey,)),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
