@@ -124,7 +124,8 @@ class _MailsPageState extends State<MailsPage> {
             return const MailsShimmer();
           }
           if (snapshot.hasData) {
-            List<PochtaModel> mails = snapshot.data!;
+            List indexes = context.read<SavedsViewModel>().indexes!;
+            List<PochtaModel> mails = context.read<PochtaViewModel>().changeisSavedField(indexes);
             mails.sort((a, b) => distance(a.lat, a.lon)
                 .compareTo(distance(b.lat, b.lon)));
             context.read<PochtaViewModel>().changePostage(mails[0],distance(mails[0].lat, mails[0].lon));
