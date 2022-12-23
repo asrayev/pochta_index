@@ -6,4 +6,5 @@ class MyLottie {
   static const online = "assets/lotties/online.json";
   static const offline = "assets/lotties/offline.json";
   static const greyoff = "assets/lotties/greyoff.json";
+  static const empty = "assets/lotties/empty.json";
 }
