@@ -39,7 +39,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               IconButton(onPressed: () async {
-                widget.category.isSaved = !(await context.read<SavedsViewModel>().deleteOrInsertToDb(widget.category.oldIndex!));
+                widget.category.isSaved = (await context.read<SavedsViewModel>().deleteOrInsertToDb(widget.category.oldIndex!));
                 isSaved=!isSaved;
                 setState(() {});
                 print("Saved: ${widget.category.isSaved}");
