@@ -13,6 +13,7 @@ import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../utils/map_util.dart';
+import 'contributors_page.dart';
 import 'language_page.dart';
 
 class SettingPage extends StatelessWidget {
@@ -63,7 +64,7 @@ class SettingPage extends StatelessWidget {
               padding: EdgeInsets.only(left: m_w(context)*0.03, right: m_w(context)*0.03),
               child: Container(
                 width: double.infinity,
-                height: m_h(context)*0.268,
+                height: m_h(context)*0.335,
                 decoration: BoxDecoration(
                   color: MyColors.C_1C2632,
                   borderRadius: BorderRadius.circular(8).r
@@ -95,6 +96,14 @@ class SettingPage extends StatelessWidget {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutUsPage()));
                         }),
                         child: funSettings(context,"About application".tr(), MyIcons.document)),
+                    myLine(context),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ContributorPage()));
+                        }),
+                        child: funSettings(context,"Contributors".tr(), MyIcons.creators)),
 
 
                   ],
@@ -148,7 +157,7 @@ class SettingPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: m_h(context)*0.2,),
+            SizedBox(height: m_h(context)*0.15,),
             Center(
               child: Lottie.asset(MyLottie.pochta, height: 70.h, width: 70.w),
             ),

@@ -20,4 +20,13 @@ class MapUtils {
     }
   }
 
+  static void openDeveloper(String Link) async {
+    var uri = Uri.parse(Link);
+    if (await canLaunch(uri.toString())) {
+      await launch(uri.toString());
+    } else {
+      throw 'Could not launch ${uri.toString()}';
+    }
+  }
+
 }

@@ -13,6 +13,10 @@ class MyIcons {
   static const quit = "assets/icons/settings/door.svg";
   static const done = "assets/icons/settings/done.svg";
   static const back = "assets/icons/settings/back.svg";
+  static const creators = "assets/icons/settings/creators.svg";
+  static const abdurauf = "assets/images/abdurauf.jpg";
+  static const samandar = "assets/images/samandar.jpg";
+  static const asadbek = "assets/images/asadbek.png";
 
 
 }
