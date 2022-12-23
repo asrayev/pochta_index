@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
-import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/description/post_page.dart';
 import 'package:pochta_index/view_model/saveds_view_model.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
-import '../../../../view_model/pochta_view_model.dart';
 import 'package:provider/provider.dart';
 class PostsSmallCard extends StatefulWidget {
   PochtaModel category;
@@ -19,9 +17,14 @@ class PostsSmallCard extends StatefulWidget {
 }
 
 class _PostsSmallCardState extends State<PostsSmallCard> {
+  late bool isSaved;
+  @override
+  void initState() {
+    isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    bool isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!));
     return ZoomTapAnimation(
       onTap: () async {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>FullInfoPage(postage: widget.category)));
