@@ -40,6 +40,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
             children: [
               IconButton(onPressed: () async {
                 widget.category.isSaved = !(await context.read<SavedsViewModel>().deleteOrInsertToDb(widget.category.oldIndex!));
+                isSaved=widget.category.isSaved;
                 setState(() {});
                 print("Saved: ${widget.category.isSaved}");
               // ignore: iterable_contains_unrelated_type
