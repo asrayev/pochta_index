@@ -7,9 +7,12 @@ class SavedsViewModel extends ChangeNotifier{
 
   LocalDatabaseRepository localDatabaseRepository;
 
-  SavedsViewModel({required this.localDatabaseRepository});
+  SavedsViewModel({required this.localDatabaseRepository}){
+    getSavedIndexes();
+  }
 
   List<PochtaModel>? saveds;
+  List? indexes;
 
   listenSaveds(List<PochtaModel> postages) async {
     List<PochtaModel> result = await localDatabaseRepository.getPostagesFromDb(postages);
@@ -19,9 +22,24 @@ class SavedsViewModel extends ChangeNotifier{
 
   deleteByIndex(PochtaModel postage){
     localDatabaseRepository.deleteByIndex(postage.oldIndex!);
+    print("Deleted: $postage");
     saveds!.remove(postage);
+    indexes!.remove(int.parse(postage.oldIndex!));
     notifyListeners();
   }
 
   insertToDb(String oldIndex,List<PochtaModel> postages)=>localDatabaseRepository.insertToDb(oldIndex,postages);
+
+  deleteOrInsertToDb(String  index) async {
+    bool isSaved = await localDatabaseRepository.deleteOrInsertToDb(index);
+    notifyListeners();
+    getSavedIndexes();
+    return isSaved;
+  }
+
+  getSavedIndexes() async {
+    indexes = await localDatabaseRepository.getSavedIndexes();
+    notifyListeners();
+  }
+
 }

@@ -26,6 +26,7 @@ class PochtaModel {
   int? workHour;
   double? lat;
   double? lon;
+  bool isSaved=false;
 
   factory PochtaModel.fromJson(Map<String, dynamic> json) => PochtaModel(
     pochtaId: json["pochta_id"]??"",

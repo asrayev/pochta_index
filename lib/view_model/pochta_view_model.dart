@@ -11,6 +11,22 @@ class PochtaViewModel extends ChangeNotifier {
   PochtaModel? currentPostage;
   bool isSwitched=false;
   num? distance;
+
+  changeisSavedField(List indexes){
+    for(var i in indexes){
+      for (var j in products){
+        if(i.toString()==j.oldIndex){
+          j.isSaved=true;
+        }
+        else{
+          j.isSaved=false;
+        }
+      }
+    }
+    return products;
+
+  }
+
   changePostage(PochtaModel newPostage,num distance1){
     currentPostage=newPostage;
     distance=distance1;

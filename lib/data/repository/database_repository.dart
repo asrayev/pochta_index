@@ -33,4 +33,23 @@ class LocalDatabaseRepository{
 
     return saveds;
   }
+
+
+  Future<bool> deleteOrInsertToDb(String index) async {
+    List indexes= await LocalDatabase.getPostagesFromDb();
+
+    for(int i in indexes){
+      if(index==i.toString()){
+        deleteByIndex(index);
+        return true;
+      }
+    }
+    LocalDatabase.insertToDatabase(int.parse(index));
+    return false;
+  }
+
+  Future<List> getSavedIndexes() async {
+    List indexes= await LocalDatabase.getPostagesFromDb();
+    return indexes;
+  }
 }
