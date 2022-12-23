@@ -21,7 +21,7 @@ class PostsSmallCard extends StatefulWidget {
 class _PostsSmallCardState extends State<PostsSmallCard> {
   @override
   Widget build(BuildContext context) {
-    bool isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!)) && widget.category.isSaved;
+    bool isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!));
     return ZoomTapAnimation(
       onTap: () async {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>FullInfoPage(postage: widget.category)));
