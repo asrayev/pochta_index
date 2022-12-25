@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +24,7 @@ class ContributorPage extends StatelessWidget {
           padding: const EdgeInsets.all(15).w,
           child: Column(
             children: [
-              Text("Contributors", style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
+              Text("Contributors".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
               InkWell(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
