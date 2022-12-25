@@ -57,7 +57,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(widget.category.oldIndex.toString(), style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.w800),),
-                    Text("${(widget.distance).toStringAsFixed(2)} km", style: TextStyle(color: Colors.white, fontSize: 14.sp), )
+                    Text("~ ${(widget.distance).toStringAsFixed(2)} km", style: TextStyle(color: Colors.white, fontSize: 14.sp), )
                   ],
                 ),
               )
