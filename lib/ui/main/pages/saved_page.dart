@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
@@ -13,6 +14,8 @@ import 'package:pochta_index/view_model/saveds_view_model.dart';
 import '../../../utils/media_query.dart';
 import '../../../utils/my_colors.dart';
 import 'package:provider/provider.dart';
+
+import '../../../view_model/ads_view_model.dart';
 
 
 class SavedPage extends StatefulWidget {
@@ -30,6 +33,7 @@ class _SavedPageState extends State<SavedPage> {
   }
   @override
   Widget build(BuildContext context) {
+    context.read<AdsViewModel>().getBannerAd();
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       appBar: AppBar(
@@ -57,8 +61,8 @@ class _SavedPageState extends State<SavedPage> {
           if(value.saveds!.isEmpty){
             return Center(
               child: Container(
-                height: 320,
-                width: 270,
+                height: m_w(context),
+                width: m_w(context)*0.7,
                 decoration: BoxDecoration(
                   // color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(12)
@@ -67,7 +71,18 @@ class _SavedPageState extends State<SavedPage> {
                 child: Column(
                   children: [
                     Lottie.asset(MyLottie.empty),
-                    const Text("You have no saved Post Offices yet",style: TextStyle(color: Colors.white),)
+                    const Text("You have no saved Post Offices yet",style: TextStyle(color: Colors.white),),
+                    context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+                      height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                      width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                      child: Container(
+                        height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                        width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                        child: AdWidget(
+                          ad: context.read<AdsViewModel>().bannerAd!,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
