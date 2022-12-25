@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pochta_index/utils/my_colors.dart';
 
 import '../../../../utils/media_query.dart';
+import '../../../../view_model/ads_view_model.dart';
+import 'package:provider/provider.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({Key? key}) : super(key: key);
@@ -31,6 +34,17 @@ class AboutUsPage extends StatelessWidget {
 
 
           ],
+        ),
+      ),
+      bottomNavigationBar:  context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+        height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+        width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+        child: Container(
+          height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+          width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+          child: AdWidget(
+            ad: context.read<AdsViewModel>().bannerAd!,
+          ),
         ),
       ),
     );
