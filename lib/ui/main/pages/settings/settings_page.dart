@@ -19,8 +19,14 @@ import 'contributors_page.dart';
 import 'language_page.dart';
 import 'package:provider/provider.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
+
+  @override
+  State<SettingPage> createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<SettingPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +38,12 @@ class SettingPage extends StatelessWidget {
           children: [
             SizedBox(height: m_h(context)*0.02,),
             Center(child: Text("Settings".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),)),
-
             SizedBox(height: m_h(context)*0.03,),
             InkWell(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
               onTap: ((){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LanguagePage(locale: context.locale.toString(),)));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LanguagePage(locale: context.locale.toString(),)));
               }),
 
               child: Padding(
@@ -64,62 +69,57 @@ class SettingPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: m_h(context)*0.04,),
-            InkWell(
-              onTap: (){
-                context.read<AdsViewModel>().getFullScreenAd();
-              },
-              child: Padding(
-                padding: EdgeInsets.only(left: m_w(context)*0.03, right: m_w(context)*0.03),
-                child: Container(
-                  width: double.infinity,
-                  height: m_h(context)*0.335,
-                  decoration: BoxDecoration(
-                    color: MyColors.C_1C2632,
-                    borderRadius: BorderRadius.circular(8).r
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: m_h(context)*0.02,),
-                      funSettings(context,"Rate this app".tr(), MyIcons.star),
-                      myLine(context),
-                      InkWell(
-                          onTap: ((){
-                            _launchURL;
-                          }),
+            Padding(
+              padding: EdgeInsets.only(left: m_w(context)*0.03, right: m_w(context)*0.03),
+              child: Container(
+                width: double.infinity,
+                height: m_h(context)*0.335,
+                decoration: BoxDecoration(
+                  color: MyColors.C_1C2632,
+                  borderRadius: BorderRadius.circular(8).r
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: m_h(context)*0.02,),
+                    funSettings(context,"Rate this app".tr(), MyIcons.star),
+                    myLine(context),
+                    InkWell(
+                        onTap: ((){
+                          _launchURL;
+                        }),
 
-                          child: funSettings(context,"Share this app".tr(), MyIcons.share)),
-                      myLine(context),
-                      InkWell(
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          onTap: ((){
-                            MapUtils.openSupport();
-                          }),
-                          child: funSettings(context,"Contact support".tr(), MyIcons.mail)),
-                      myLine(context),
-                      InkWell(
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          onTap: ((){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutUsPage()));
-                          }),
-                          child: funSettings(context,"About application".tr(), MyIcons.document)),
-                      myLine(context),
-                      InkWell(
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          onTap: ((){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ContributorPage()));
-                          }),
-                          child: funSettings(context,"Contributors".tr(), MyIcons.creators)),
+                        child: funSettings(context,"Share this app".tr(), MyIcons.share)),
+                    myLine(context),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          MapUtils.openSupport();
+                        }),
+                        child: funSettings(context,"Contact support".tr(), MyIcons.mail)),
+                    myLine(context),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>AboutUsPage()));
+                        }),
+                        child: funSettings(context,"About application".tr(), MyIcons.document)),
+                    myLine(context),
+                    InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        onTap: ((){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ContributorPage()));
+                        }),
+                        child: funSettings(context,"Contributors".tr(), MyIcons.creators)),
 
 
-                    ],
-                  ),
+                  ],
+                ),
 
 
-              )),
-            ),
+            )),
             SizedBox(height: m_h(context)*0.04,),
             InkWell(highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
@@ -219,6 +219,7 @@ class SettingPage extends StatelessWidget {
                     ],
                   );
   }
+
   _launchURL() async {
     const url = 'https://flutter.dev';
     if (await canLaunch(url)) {

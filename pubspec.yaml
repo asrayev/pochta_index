@@ -68,6 +68,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   sqflite: ^2.2.2
   google_mobile_ads: ^2.3.0
+  package_rename: ^1.0.0+1
 
 
 dev_dependencies:
