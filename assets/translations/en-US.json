@@ -29,5 +29,8 @@
   "Monday - Saturday": "Monday - Saturday",
   "Monday - Friday": "Monday - Friday",
   "Status": "Status",
-  "24 hour" : "24 hour"
+  "24 hour" : "24 hour",
+  "You have no saved Post Offices yet" : "You have no saved Post Offices yet",
+  "Contributors" : "Contributors",
+  "Saved Post Offices": "Saved Post Offices"
 }

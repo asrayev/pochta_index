@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/servis/database_service.dart';
@@ -39,7 +41,7 @@ class _SavedPageState extends State<SavedPage> {
       appBar: AppBar(
         backgroundColor: MyColors.C_0F1620,
         elevation: 0,
-        title: Text("Saved Post Offices"),
+        title: Text("Saved Post Offices".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 24.sp, fontWeight: FontWeight.w300),),
         actions: [
           InkWell(
             highlightColor: Colors.transparent,
@@ -71,7 +73,7 @@ class _SavedPageState extends State<SavedPage> {
                 child: Column(
                   children: [
                     Lottie.asset(MyLottie.empty),
-                    const Text("You have no saved Post Offices yet",style: TextStyle(color: Colors.white),),
+                     Text("You have no saved Post Offices yet".tr(), style: GoogleFonts.roboto(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.w300),),
                     context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
                       height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
                       width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
