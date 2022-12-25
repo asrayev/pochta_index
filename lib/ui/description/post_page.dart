@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pochta_index/data/models/pochta_model.dart';
 import 'package:pochta_index/utils/map_util.dart';
 import 'package:pochta_index/utils/media_query.dart';
+import 'package:pochta_index/view_model/ads_view_model.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../data/servis/post_page_service.dart';
 import '../../utils/my_colors.dart';
+import 'package:provider/provider.dart';
+
 
 // ignore: must_be_immutable
 class FullInfoPage extends StatefulWidget {
@@ -18,6 +22,11 @@ class FullInfoPage extends StatefulWidget {
 }
 
 class _FullInfoPageState extends State<FullInfoPage> {
+  @override
+  void initState() {
+   // context.read<AdsViewModel>().getBannerAd();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +44,7 @@ class _FullInfoPageState extends State<FullInfoPage> {
                         image: NetworkImage(
                             "https://sun9-76.userapi.com/impg/l-fXjFHicRl6QmJoaL8dmXVRdq3JvF9bQym-JQ/RXjAf4HdN8c.jpg?size=604x404&quality=96&sign=e3b414e1ea6b1b89a06b1ceb52adb41b&type=album"),
                         fit: BoxFit.cover)),
-              ), //advertisement
+              ),
               Expanded(
                   child: Container(
                     padding:  EdgeInsets.all(m_h(context)*0.012),
@@ -169,7 +178,14 @@ class _FullInfoPageState extends State<FullInfoPage> {
                   ),
                 ],
               ),
-                  ))
+                  )),
+              context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+                height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                child: AdWidget(
+                  ad: context.read<AdsViewModel>().bannerAd!,
+                ),
+              )
             ],
           ),
         ),

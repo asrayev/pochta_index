@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/ui/main/pages/widget/postage_card.dart';
 import 'package:pochta_index/utils/my_icons.dart';
+import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
 import 'package:pochta_index/view_model/saveds_view_model.dart';
 
@@ -33,6 +35,7 @@ class _SavedPageState extends State<SavedPage> {
       appBar: AppBar(
         backgroundColor: MyColors.C_0F1620,
         elevation: 0,
+        title: Text("Saved Post Offices"),
         actions: [
           InkWell(
             highlightColor: Colors.transparent,
@@ -51,6 +54,25 @@ class _SavedPageState extends State<SavedPage> {
       ),
       body: Consumer<SavedsViewModel>(
         builder: (context, value, child) {
+          if(value.saveds!.isEmpty){
+            return Center(
+              child: Container(
+                height: 320,
+                width: 270,
+                decoration: BoxDecoration(
+                  // color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(12)
+
+                ),
+                child: Column(
+                  children: [
+                    Lottie.asset(MyLottie.empty),
+                    const Text("You have no saved Post Offices yet",style: TextStyle(color: Colors.white),)
+                  ],
+                ),
+              ),
+            );
+          }
           if(value.saveds!=null){
             return Container(
               padding: const  EdgeInsets.symmetric(horizontal: 12).r,
