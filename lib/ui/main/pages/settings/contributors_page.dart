@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 
 import '../../../../utils/map_util.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
+import '../../../../view_model/ads_view_model.dart';
+import 'package:provider/provider.dart';
 
 class ContributorPage extends StatelessWidget {
   const ContributorPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    context.read<AdsViewModel>().getBannerAd();
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       body: SafeArea(
@@ -145,7 +149,19 @@ class ContributorPage extends StatelessWidget {
                   ),
                 ),
               ),
+
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+        height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+        width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+        child: Container(
+          height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+          width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+          child: AdWidget(
+            ad: context.read<AdsViewModel>().bannerAd!,
           ),
         ),
       ),

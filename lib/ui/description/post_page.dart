@@ -24,7 +24,7 @@ class FullInfoPage extends StatefulWidget {
 class _FullInfoPageState extends State<FullInfoPage> {
   @override
   void initState() {
-   // context.read<AdsViewModel>().getBannerAd();
+   context.read<AdsViewModel>().getBannerAd();
     super.initState();
   }
   @override
@@ -182,8 +182,12 @@ class _FullInfoPageState extends State<FullInfoPage> {
               context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
                 height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
                 width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
-                child: AdWidget(
-                  ad: context.read<AdsViewModel>().bannerAd!,
+                child: Container(
+                  height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                  width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                  child: AdWidget(
+                    ad: context.read<AdsViewModel>().bannerAd!,
+                  ),
                 ),
               )
             ],
