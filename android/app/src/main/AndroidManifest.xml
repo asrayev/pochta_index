@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pochtaindex.pochta_index">
+    package="com.uzmobiledevelopment">
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
-        android:label="pochta_index"
+        android:label="POCHTA UZ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

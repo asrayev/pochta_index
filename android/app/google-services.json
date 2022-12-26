@@ -7,6 +7,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:610483494472:android:7ef12bc1f9821cb69dc27d",
+        "android_client_info": {
+          "package_name": "com.example.pochta_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610483494472-uqeg3ptjvkqhibn4lulhhavogvjq1kpq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pochta_admin",
+            "certificate_hash": "a676f7b604c33749638a71e7d7dcfb165fcf6eee"
+          }
+        },
+        {
+          "client_id": "610483494472-1125ne6qlag8mkckglc7qmudsdgrlucp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2cM1b1WmDAZXThJmxQlfY9jd_LvjP0ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610483494472-1125ne6qlag8mkckglc7qmudsdgrlucp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:610483494472:android:593802fbb620f7f59dc27d",
         "android_client_info": {
           "package_name": "com.pochtaindex.pochta_index"
@@ -21,6 +58,35 @@
             "certificate_hash": "a676f7b604c33749638a71e7d7dcfb165fcf6eee"
           }
         },
+        {
+          "client_id": "610483494472-1125ne6qlag8mkckglc7qmudsdgrlucp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2cM1b1WmDAZXThJmxQlfY9jd_LvjP0ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610483494472-1125ne6qlag8mkckglc7qmudsdgrlucp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610483494472:android:c0c35ba62c7f35319dc27d",
+        "android_client_info": {
+          "package_name": "com.uzmobiledevelopment"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "610483494472-1125ne6qlag8mkckglc7qmudsdgrlucp.apps.googleusercontent.com",
           "client_type": 3
