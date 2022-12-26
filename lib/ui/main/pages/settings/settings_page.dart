@@ -36,7 +36,7 @@ class _SettingPageState extends State<SettingPage> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: m_h(context)*0.01,),
+            SizedBox(height: m_h(context)*0.01 ,),
             Center(child: Text("Settings".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),)),
             SizedBox(height: m_h(context)*0.03,),
             InkWell(
