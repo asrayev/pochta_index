@@ -39,7 +39,7 @@ class PochtaModel {
     lat: json["lat"].toDouble()?? 0.0,
     lon: json["lon"].toDouble()?? 0.0,
   );
-
+print("asd");
   Map<String, dynamic> toJson() => {
     "pochta_id": pochtaId,
     "address": address,
