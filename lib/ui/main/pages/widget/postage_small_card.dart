@@ -7,6 +7,8 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../view_model/ads_view_model.dart';
 class PostsSmallCard extends StatefulWidget {
   PochtaModel category;
   num distance;
@@ -47,6 +49,8 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
                 isSaved=!isSaved;
                 setState(() {});
                 print("Saved: ${widget.category.isSaved}");
+                // ignore: use_build_context_synchronously
+                context.read<AdsViewModel>().getFullScreenAd();
               // ignore: iterable_contains_unrelated_type
               }, icon: isSaved?Icon(Icons.star,color: Colors.white,):Icon(Icons.star_border_outlined,color: Colors.grey,)),
               Expanded(
@@ -54,7 +58,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(widget.category.oldIndex.toString(), style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.w800),),
-                    Text("${(widget.distance).toStringAsFixed(2)} km", style: TextStyle(color: Colors.white, fontSize: 14.sp), )
+                    Text("~ ${(widget.distance).toStringAsFixed(2)} km", style: TextStyle(color: Colors.white, fontSize: 14.sp), )
                   ],
                 ),
               )

@@ -4,37 +4,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pochta_index/ui/main/pages/settings/about_us_page.dart';
 import 'package:pochta_index/utils/media_query.dart';
 import 'package:pochta_index/utils/my_colors.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:pochta_index/utils/my_lotties.dart';
+import 'package:pochta_index/view_model/ads_view_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../utils/map_util.dart';
 import 'contributors_page.dart';
 import 'language_page.dart';
+import 'package:provider/provider.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
 
   @override
+  State<SettingPage> createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<SettingPage> {
+
+  @override
   Widget build(BuildContext context) {
+    context.read<AdsViewModel>().getBannerAd();
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: m_h(context)*0.03,),
+            SizedBox(height: m_h(context)*0.01 ,),
             Center(child: Text("Settings".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),)),
-
             SizedBox(height: m_h(context)*0.03,),
             InkWell(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
               onTap: ((){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LanguagePage(locale: context.locale.toString(),)));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LanguagePage(locale: context.locale.toString(),)));
               }),
 
               child: Padding(
@@ -167,6 +176,17 @@ class SettingPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+        height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+        width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+        child: Container(
+          height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+          width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+          child: AdWidget(
+            ad: context.read<AdsViewModel>().bannerAd!,
+          ),
+        ),
+      ),
     );
   }
 
@@ -199,6 +219,7 @@ class SettingPage extends StatelessWidget {
                     ],
                   );
   }
+
   _launchURL() async {
     const url = 'https://flutter.dev';
     if (await canLaunch(url)) {

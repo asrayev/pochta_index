@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:pochta_index/ui/main/main_page.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/utils/my_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../../../../utils/media_query.dart';
 import '../../../../utils/my_colors.dart';
+import '../../../../view_model/ads_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LanguagePage extends StatefulWidget {
   String locale;
@@ -40,7 +44,7 @@ class _LanguagePageState extends State<LanguagePage> {
   }
   @override
   Widget build(BuildContext context) {
-    print(context.locale);
+    context.read<AdsViewModel>().getBannerAd();
 
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
@@ -53,11 +57,10 @@ class _LanguagePageState extends State<LanguagePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: ((){
-                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> const SettingPage()));
+                      Navigator.pop(context);
                      }),
                     child: SvgPicture.asset(MyIcons.back, color: MyColors.C_1C2632,height: 35.h, width: 35.w,)),
                 Text("Language".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 27.sp, fontWeight: FontWeight.w400),),
@@ -88,7 +91,7 @@ class _LanguagePageState extends State<LanguagePage> {
                               uz = 1;
                               en = 0;
                               ru = 0;
-                              setState(() {});
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>MainPage()));
                             }),
                             child: funSettings(context,"UZ", "Uzbekistan", uz)),
                         myLine(context),
@@ -101,7 +104,8 @@ class _LanguagePageState extends State<LanguagePage> {
                               uz = 0;
                               en = 1;
                               ru = 0;
-                              setState(() {});
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>MainPage()));
+
                             }),
 
                             child: funSettings(context,"EN", "USA", en)),
@@ -115,7 +119,8 @@ class _LanguagePageState extends State<LanguagePage> {
                               uz = 0;
                               en = 0;
                               ru = 1;
-                              setState(() {});
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>MainPage()));
+
                             }),
                             child: funSettings(context,"RU", "Russia", ru)),
                ]
@@ -123,6 +128,17 @@ class _LanguagePageState extends State<LanguagePage> {
            ),
           )
         ],
+      ),
+      bottomNavigationBar: context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+        height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+        width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+        child: Container(
+          height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+          width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+          child: AdWidget(
+            ad: context.read<AdsViewModel>().bannerAd!,
+          ),
+        ),
       ),
     );
   }

@@ -29,5 +29,9 @@
   "Monday - Saturday": "Monday - Saturday",
   "Monday - Friday": "Monday - Friday",
   "Status": "Status",
-  "24 hour" : "24 hour"
+  "24 hour" : "24 hour",
+  "You have no saved Post Offices yet" : "You have no saved Post Offices yet",
+  "Contributors" : "Contributors",
+  "Saved Post Offices": "Saved Post Offices",
+  "long_text": "This application provides some information about all Post Offices in the territory of the Republic of Uzbekistan.\n\nThe main goal of the project is to provide people with easy access to information about postal services in the territory of Uzbekistan, to find them and to contact the center's call centers without leaving the application.\n\nThe application does not perform tasks such as collecting, processing and distributing user data.\n\nThe ads displayed in the app are provided by Google, and if you see an inappropriate ad, please contact the app developers."
 }

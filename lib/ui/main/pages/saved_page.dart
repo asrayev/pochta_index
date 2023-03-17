@@ -1,16 +1,23 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pochta_index/data/servis/database_service.dart';
 import 'package:pochta_index/ui/main/pages/settings/settings_page.dart';
 import 'package:pochta_index/ui/main/pages/widget/postage_card.dart';
 import 'package:pochta_index/utils/my_icons.dart';
+import 'package:pochta_index/utils/my_lotties.dart';
 import 'package:pochta_index/view_model/pochta_view_model.dart';
 import 'package:pochta_index/view_model/saveds_view_model.dart';
 
 import '../../../utils/media_query.dart';
 import '../../../utils/my_colors.dart';
 import 'package:provider/provider.dart';
+
+import '../../../view_model/ads_view_model.dart';
 
 
 class SavedPage extends StatefulWidget {
@@ -28,11 +35,13 @@ class _SavedPageState extends State<SavedPage> {
   }
   @override
   Widget build(BuildContext context) {
+    context.read<AdsViewModel>().getBannerAd();
     return Scaffold(
       backgroundColor: MyColors.C_0F1620,
       appBar: AppBar(
         backgroundColor: MyColors.C_0F1620,
         elevation: 0,
+        title: Text("Saved Post Offices".tr(), style: GoogleFonts.lalezar(color: Colors.white, fontSize: 24.sp, fontWeight: FontWeight.w300),),
         actions: [
           InkWell(
             highlightColor: Colors.transparent,
@@ -51,6 +60,36 @@ class _SavedPageState extends State<SavedPage> {
       ),
       body: Consumer<SavedsViewModel>(
         builder: (context, value, child) {
+          if(value.saveds!.isEmpty){
+            return Center(
+              child: Container(
+                height: m_w(context),
+                width: m_w(context)*0.7,
+                decoration: BoxDecoration(
+                  // color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(12)
+
+                ),
+                child: Column(
+                  children: [
+                    Lottie.asset(MyLottie.empty),
+                     Text("You have no saved Post Offices yet".tr(), style: GoogleFonts.roboto(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.w300),),
+                    context.read<AdsViewModel>().bannerAd==null?SizedBox():Container(
+                      height: context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                      width: context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                      child: Container(
+                        height:context.read<AdsViewModel>().bannerAd!.size.height.toDouble(),
+                        width:context.read<AdsViewModel>().bannerAd!.size.width.toDouble(),
+                        child: AdWidget(
+                          ad: context.read<AdsViewModel>().bannerAd!,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
           if(value.saveds!=null){
             return Container(
               padding: const  EdgeInsets.symmetric(horizontal: 12).r,

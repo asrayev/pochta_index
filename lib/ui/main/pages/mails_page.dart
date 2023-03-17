@@ -151,12 +151,7 @@ class _MailsPageState extends State<MailsPage> {
                       physics: const BouncingScrollPhysics(),
                       children: List.generate(mails.length-1, (index) {
                         PochtaModel category = mails[index+1];
-                        return Dismissible(
-                            key: UniqueKey(),
-                            onDismissed: (direction) async{
-                              await context.read<SavedsViewModel>().insertToDb(category.oldIndex!, context.read<SavedsViewModel>().saveds!);
-                            },
-                            child: PostsSmallCard(category: category,distance: distance(category.lat, category.lon),));
+                        return PostsSmallCard(category: category,distance: distance(category.lat, category.lon),);
                       }),
                     ),
                   )
