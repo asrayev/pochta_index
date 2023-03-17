@@ -23,6 +23,7 @@ class _PostsSmallCardState extends State<PostsSmallCard> {
   @override
   void initState() {
     isSaved = context.read<SavedsViewModel>().indexes!.contains(int.parse(widget.category.oldIndex!));
+
     super.initState();
   }
   @override
